@@ -41,10 +41,9 @@ y = imputer2.transform(y)
 
 
 
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
-ct1 = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [0])], remainder='passthrough')
-X = np.array(ct1.fit_transform(X))
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+X[:, 2] = le.fit_transform(X[:, 2])
 
 
 # split into train and test sets
